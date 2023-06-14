@@ -1,0 +1,644 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+
+body {
+   overflow-x: hidden;
+   min-width:300px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#home {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../Image/sky.jpg);
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.home-text{
+    position: relative;
+    left:20%;
+    z-index: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    width: 70%;
+    word-spacing: 0px;
+}
+
+.dim{
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 105%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1); /* Adjust the alpha value to control the opacity */
+    z-index: 0;
+
+}
+
+#home-heading {
+    color: #000000;
+    
+}
+
+.blue-text {
+    color: #defefc;
+    font-variant: small-caps;
+}
+
+#home h2{
+    color: #000
+}
+
+#home p{
+    color: #ffffff;
+    font-weight: 300;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+/*navigation bar*/
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000000;
+    backdrop-filter: blur(2rem);
+    z-index: 3;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin: 0;
+    padding: 15px;
+    font-variant: small-caps;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a {
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    font-size: larger;
+}
+
+nav li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Adjust the desired height of the line */
+    background-color: #ff0000;
+    transform: scaleX(0); /* Initially set the scale to 0 to hide the line */
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+}
+
+nav li a:hover::after {
+    transform: scaleX(1);
+}
+/*navigation bar*/
+
+
+/*animation of shooting stars*/
+.shooting_stars span {
+    position: absolute;  /*"star" of the shooting star properties*/
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 5px; /*star thickness*/
+    background: #fff;
+    border-radius: 75%;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
+    0 0 0 8px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(255, 255, 255);
+    animation: animate 3s linear infinite;
+       
+}
+
+.shooting_stars::before
+{
+    content: '';
+    position:absolute;
+    top: 50%; /*position of the "star" to the trail*/
+    transform: translateY(-50%);
+    width: 300px;
+    height: 3.5px; /*thickness of star trail*/
+    background: linear-gradient(90deg,#fff, transparent);
+    
+}
+
+@keyframes animate {
+    0% { transform: rotate(315deg) translateX(0); 
+        opacity: 1;
+    }    
+    70%{
+        opacity: 1;
+    }
+    100%{ 
+        transform: rotate(315deg) translateX(-1000px)}
+
+}
+
+.shooting_stars span:nth-child(1)
+{
+    top: 0;
+    right: 800px;
+    left: initial;
+    animation-delay: 0s;
+    animation-duration: 3s
+}
+
+.shooting_stars span:nth-child(2)
+{
+    top: 0;
+    right: 150px;
+    left: initial;
+    animation-delay: 0.2s;
+    animation-duration: 3s
+}
+
+.shooting_stars span:nth-child(3)
+{
+    top: 90px;
+    right: 0px;
+    left: initial;
+    animation-delay: 0.4s;
+    animation-duration: 2s
+}
+
+.shooting_stars span:nth-child(4)
+{
+    top: 0px;
+    right: 600px;
+    left: initial;
+    animation-delay: 0.6s;
+    animation-duration: 2.5s
+}
+/*animation of shooting stars*/
+
+
+.section{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    padding: 20px;
+}
+
+
+#projects{
+    background-color: #ffffff;
+    color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+
+}
+
+#projects h1 {
+    position: relative;
+    top: -10%;
+    font-variant: small-caps;
+}
+
+#projects p {
+    position: relative;
+    top: 40%;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    width: 70%;
+    text-align: center;
+    word-spacing: 0px;
+}
+
+
+.slider{
+    position: relative;
+    top: -40%;
+    left: 0%;
+    height: 250px;
+    width: 150%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.slider-track{
+    display: flex;
+    width: calc(250px * 8);
+    animation: scroll 20s linear infinite;
+}
+
+.slider-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 4));
+    }
+}
+
+.slide {
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+}
+
+.slider img {
+    width: 100%;
+    transition: transform 1s;
+
+}
+
+.slider img:hover{
+    transform: translateZ(20px);
+}
+
+
+/* Gradient Shadows */
+
+.slider::before,
+.slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255,0) 100%);
+    content:"";
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.slider::before{
+    left: 0;
+    right: 0;
+
+}
+
+.slider::after{
+    left: 0;
+    right: 0;
+
+}
+
+
+#about{
+    background-color: #defefc;
+    max-height: 55vh;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#about h1 {
+    margin-top: 0;
+    position: relative;
+    top: -10%;  /*postive goes down, negative goes up*/
+    left: 0%; /*positive goes right, negative goes left*/
+    font-variant: small-caps;
+    font-weight: larger;
+}
+
+#about p{
+    position: relative;
+    top: -5%;  /*negative goes up, postive goes down*/
+    left: 0%; /*positive goes right, negative goes left*/
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 100;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    width: 50%;
+    text-align: justify;
+    justify-content: space-between;
+    word-spacing: 0px;
+           
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+#row {
+    flex:1;
+    padding: 20px;
+
+}
+
+#row h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#row p {
+    font-size: 16px;
+}
+
+#row-1{
+    position: relative;
+    top: 40%;
+    left: -50%;
+}
+
+#row-2{
+    position: relative;
+    top: 40%;
+    left: 50%;
+}
+
+
+@media (max-width: 768px) {
+    #about h1,
+    #about p,
+    #column-1,
+    #column-2 {
+        position: static;
+        top: auto;
+        left: auto;
+    }
+
+    #about p {
+        width: 100%; /* Adjust width to occupy full width */
+    }
+
+    #about h1{
+        padding-top: 1em;
+    }
+
+}
+/*end of about*/
+
+
+#contact {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    background-image: url(../Image/sky.jpg); /*backgound*/
+    display: flex;
+    z-index: -1; 
+    overflow: hidden;
+}
+
+.contact-box {
+    background-color: #defefc;
+    padding: 5.5rem 4.5rem;
+    background-color: #defefc;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    flex-direction: column;
+    align-items: start;
+}
+
+/*start of 1st column contact*/
+
+#contact-title{
+    font-size: xx-large;
+    text-transform: uppercase;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
+}
+
+#contact-text{
+    font-size: medium;
+    padding-top: 1em;   
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ 
+}
+
+.contact-info{
+    padding-right: 2rem;
+}
+
+.social-media{
+    font-size: medium;
+    padding-top: 4em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/*start of social media*/
+.wrapper{
+    display: inline-flex;
+    position: relative;
+    top: 0;
+    left: -5%;
+    padding-top: 1em;
+}
+
+.wrapper .icon{
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+.wrapper .icon span{
+    position: relative;
+    height: 60px;
+    width: 60px;
+    display: block;
+    background: #fff;
+    text-align: center;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 10px 10px rbga(0,0,0,0.1);
+}
+
+.wrapper .icon:hover span i{
+    color: #fff;
+    transition: color 0.2s;
+}
+
+.wrapper .icon span i{
+    font-size: 25px;
+    line-height: 60px;
+}
+
+.wrapper .icon .tooltip{
+    position: absolute;
+    top: 0px;
+    background: #fff;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px 18px;
+    border-radius: 25px;
+    box-shadow: 0 10px 10px rbga(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+    text-decoration: none;
+}
+
+.wrapper .icon:hover .tooltip{
+    top: -60px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.wrapper .icon .tooltip::before{
+    position: absolute;
+    content:"";
+    height: 15px;
+    width: 15px;
+    background: #fff;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+}
+
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip{
+    text-shadow: 0px -1px 0px rgba(0,0,0,0.4);
+}
+
+.wrapper .linkdln:hover span,
+.wrapper .linkdln:hover .tooltip,
+.wrapper .linkdln:hover .tooltip:before{
+    background: #3B5999;
+}
+
+.wrapper .github:hover span,
+.wrapper .github:hover .tooltip,
+.wrapper .github:hover .tooltip:before{
+    background: #333;
+}
+
+.wrapper .icon a .tooltip {
+    left: -32%; 
+}
+
+.wrapper .icon a {
+    color: initial;
+    text-decoration: none;
+}
+/*end of social media*/
+
+.contact-info{
+    padding-right: 2rem;
+}
+/*end of 1st column contact*/
+
+/*start of contact form*/
+
+.contact-form{
+    padding: 1rem 0;
+}
+
+.contact-form .row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    grid-column-gap: 0.6rem;
+}
+
+.contact-input, .contact-input-textarea{
+    padding: 1.2rem 2.1rem;
+    margin: 0.6rem 0.3rem;
+    border: none;
+    outline: none;
+    background: #ffffff;
+    font-weight: 300;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+
+.contact-input.textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.contact-input::placeholder{
+    font-weight: 400;
+}
+
+.contact-input:hover {
+    background: #ececec;
+}
+  
+.contact-input:focus {
+    background: #eaeaea;
+}
+  
+.contact-input.btn {
+    margin-top: 0.6rem;
+}
+
+
+.btn {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.2rem 2.1rem;
+    margin: 0.6rem 0.3rem;
+    background-color: transparent;
+    color: #000000;
+    width: auto;
+    font-size: 1rem;
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn:hover {
+    background-color: #F6BA6F;
+    color: #fff;
+    transform: 0.3;
+}
+
+/*end of contact form*/
